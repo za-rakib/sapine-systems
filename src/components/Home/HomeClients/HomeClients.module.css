@@ -1,0 +1,69 @@
+.homeClients {
+  flex: 5;
+  background-color: rgb(228, 228, 228);
+  padding: 10px;
+}
+.clientHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+.clientHeaderLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.clientHeaderLeftIcon {
+  font-size: 25px !important;
+  margin-right: 10px;
+  color: gray;
+}
+.clientHeaderInput {
+  height: 30px;
+  width: 350px;
+  border: 2px solid rgb(39, 39, 39);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.clientHeaderRightButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  padding: 3px 15px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.clientHeaderRightButtonText {
+  font-weight: bold;
+}
+
+.clientHeaderRightButtonIcon {
+  font-size: 25px !important;
+  margin-left: 15px;
+}
+.table {
+  margin-top: 40px;
+}
+.tableHeader > tr > th {
+  color: rgb(44, 44, 44);
+  font-weight: bold;
+  font-size: 20px;
+}
+.tableBody {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: rgb(161, 161, 161);
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  border: none;
+  text-align: center;
+}

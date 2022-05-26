@@ -1,0 +1,33 @@
+.navBar {
+  background-color: rgb(53, 50, 100);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  color: #fff;
+  padding:0 20px;
+}
+.logo{
+    font-size:25px;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.icon{
+    margin-right:15px;
+    height: 30px;
+    width: 30px;
+}
+.profile {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: #fff;
+}
