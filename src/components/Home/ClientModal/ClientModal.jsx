@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import Form from "@rjsf/core";
 
 const customStyles = {
   content: {
@@ -12,9 +13,43 @@ const customStyles = {
   },
 };
 
+const schema = {
+  title: "LEAD",
+  type: "object",
+  required: ["name", "email"],
+  properties: {
+    Status: {
+      type: "string",
+      enum: ["New", "Old"],
+      default: "New",
+    },
+    Source: {
+      type: "string",
+      enum: ["Website", "Facebook", "Youtube"],
+      default: "Website",
+    },
+    name: {
+      type: "string",
+      title: "Name",
+      default: "Jack",
+    },
+
+    number: {
+      type: "string",
+      title: "Number",
+      minLength: 10,
+    },
+    email: {
+      type: "string",
+      title: "Email",
+      default: "email",
+    },
+  },
+};
 Modal.setAppElement("#root");
 
 const ClientModal = ({ modalShow, setModalShow }) => {
+  const formData = (type) => console.log.bind(type);
   //   console.log({modalShow12: modalShow});
   return (
     <Modal
@@ -23,15 +58,13 @@ const ClientModal = ({ modalShow, setModalShow }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <button onClick={() => setModalShow(false)}>close</button>
-      <div>I am a modal</div>
-      <form>
-        <input />
-        <button>tab navigation</button>
-        <button>stays</button>
-        <button>inside</button>
-        <button>the modal</button>
-      </form>
+      {/* <button onClick={() => setModalShow(false)}>close</button> */}
+      <Form
+        schema={schema}
+        onChange={formData("changed")}
+        onSubmit={formData("submitted")}
+        onError={formData("errors")}
+      />
     </Modal>
   );
 };
