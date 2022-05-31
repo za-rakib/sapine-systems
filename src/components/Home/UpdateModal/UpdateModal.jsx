@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "./ClientModal.css";
+import { Form } from "react-bootstrap";
+import { UPDATE_CLIENT } from "../../../Graphql/Client/Mutation";
 import { useMutation } from "@apollo/client";
-import { ADD_CLIENT } from "../../../Graphql/Client/Mutation";
 const customStyles = {
   content: {
     top: "50%",
@@ -15,11 +15,11 @@ const customStyles = {
 };
 
 Modal.setAppElement("#root");
-
-const ClientModal = ({ modalShow, setModalShow }) => {
+const UpdateModal = ({ updateModalShow, setUpdateModalShow, rowData }) => {
   const [data, setData] = useState(null);
-  const [addClient, { error }] = useMutation(ADD_CLIENT);
-  if (error) return "error";
+  //console.log({ editData });
+  const [updateClient, { error }] = useMutation(UPDATE_CLIENT);
+    if (error) return "error";
 
   const onChange = (e) => {
     setData((prev) => {
@@ -28,33 +28,32 @@ const ClientModal = ({ modalShow, setModalShow }) => {
   };
 
   //console.log(data);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addClient({
+  const handleSubmit = (id) => {
+    updateClient({
       variables: {
+        id: id,
         name: data.name,
         number: data.number,
         email: data.email,
         source: data.source,
         status: data.status,
       },
-      onCompleted: (res) => {
-        if (res) window.location.reload();
-      },
+        onCompleted: (res) => {
+          if (res) window.location.reload();
+        },
     });
   };
-
   return (
     <Modal
-      isOpen={modalShow}
-      onRequestClose={() => setModalShow(false)}
+      isOpen={updateModalShow}
+      onRequestClose={() => setUpdateModalShow(false)}
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <form className="modalFrom">
+      <Form className="modalFrom">
         <select
           name="status"
-          defaultValue="new"
+          defaultValue={rowData.status}
           onChange={onChange}
           className="input"
         >
@@ -65,7 +64,7 @@ const ClientModal = ({ modalShow, setModalShow }) => {
           name="source"
           onChange={onChange}
           className="input"
-          defaultValue="facebook"
+          defaultValue={rowData.source}
         >
           <option value="facebook">Facebook</option>
           <option value="google">Google</option>
@@ -76,14 +75,14 @@ const ClientModal = ({ modalShow, setModalShow }) => {
           type="text"
           name="name"
           className="input"
-          placeholder="Name"
+          placeholder={rowData.name}
           onChange={onChange}
         />
         <input
           type="text"
           className="input"
           name="email"
-          placeholder="Email"
+          placeholder={rowData.email}
           onChange={onChange}
         />
 
@@ -91,13 +90,13 @@ const ClientModal = ({ modalShow, setModalShow }) => {
           type="text"
           className="input"
           name="number"
-          placeholder="Number"
+          placeholder={rowData.number}
           onChange={onChange}
         />
-        <button onClick={handleSubmit}>Add Client</button>
-      </form>
+        <button onClick={() => handleSubmit(rowData.id)}>Edit Client</button>
+      </Form>
     </Modal>
   );
 };
 
-export default ClientModal;
+export default UpdateModal;

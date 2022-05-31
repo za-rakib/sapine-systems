@@ -61,9 +61,24 @@
 .tableBody {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  background-color: rgb(244, 241, 255);
+  background-color: #2d2b52;
   border-collapse: separate;
   border-spacing: 0 20px;
   border: none;
   text-align: center;
+}
+.dataRow{
+    margin-top: 10px;
+    border-bottom: 7px solid #e4e4e4
+}
+.dataRow>td{
+    padding: 10px;
+    color:aliceblue
+}
+.statusButton{
+    padding:5px 20px;
+    background-color: rgb(255, 255, 255);
+    color:#2d2b52;
+    border: none;
+    box-shadow: rgba(86, 86, 176, 0.25) 0px 2px 5px -1px,
 }
